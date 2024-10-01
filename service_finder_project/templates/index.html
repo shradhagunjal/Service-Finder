@@ -1,0 +1,354 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
+ 
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-text">
+      <h1>Welcome to <em>Service Finder!</em></h1>
+      
+      <p> Your go-to local solution for <span class="typed-element type" ></span> services.</p>
+        <p> 
+            From plumbing to electrical and handyman work, we connect you with trusted professionals in your community. 
+            Quality service, just a click away!
+        </p>
+    </div>
+    <div class="hero-animation">
+      <div class="image-circle">
+        <img src="{% static 'img/help.jpg' %}" alt="Team Benefits Image">
+      </div>
+      <div class="floating-shape shape1"></div>
+      <div class="floating-shape shape2"></div>
+      <div class="floating-shape shape3"></div>
+    </div>
+</section>
+
+
+<!-- Services Section -->
+<section id="services" class="services-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Our Services</h2>
+        <p class="text-center mb-5">Browse and book trusted local professionals for all your needs.</p>
+        <div class="row text-center">
+            <div class="col-md-3 mb-4">
+                <div class="service-card p-4 shadow-sm">
+                    <img src="{% static 'img/cleaning.jpeg' %}" class="img-fluid mb-3">
+                    <h5>Plumbing</h5>
+                    <p>Fix leaks, install fixtures, and more with trusted local plumbers.</p>
+                    <a href="#" class="btn btn-outline-primary">Book Now</a>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="service-card p-4 shadow-sm">
+                    <img src="{% static 'img/cleaning.jpeg' %}" class="img-fluid mb-3">
+                    <h5>Electrical</h5>
+                    <p>Expert electricians for all your wiring and repair needs.</p>
+                    <a href="#" class="btn btn-outline-primary">Book Now</a>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="service-card p-4 shadow-sm">
+                    <img src="{% static 'img/cleaning.jpeg' %}" class="img-fluid mb-3">
+                    <h5>Cleaning</h5>
+                    <p>Professional cleaning services to keep your home spotless.</p>
+                    <a href="#" class="btn btn-outline-primary">Book Now</a>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="service-card p-4 shadow-sm">
+                    <img src="{% static 'img/cleaning.jpeg' %}" class="img-fluid mb-3">
+                    <h5>Tutoring</h5>
+                    <p>Find top tutors to help you master any subject and get support.</p>
+                    <a href="#" class="btn btn-outline-primary">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+<!-- Request a Callback Section -->
+<section id="get-in-touch" class="contact-section bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Need Help? Request a Callback!</h2>
+        <p class="text-center mb-5">Our tech heroes are just a call away. Get in touch and let us help you find the right solution!</p>
+        <div class="text-center">
+            <a href="#" class="btn btn-primary btn-lg shadow-lg rounded-pill px-5" data-bs-toggle="modal" data-bs-target="#callbackModal">Request a Callback</a>
+        </div>
+    </div>
+  </section>
+  
+  <!-- Modal for Callback Request -->
+  <div class="modal fade" id="callbackModal" tabindex="-1" aria-labelledby="callbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-4 shadow-lg">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="callbackModalLabel">Request a Callback</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-4">
+                <form id = "contact_form" class="validation" novalidate method="POST" action = '/contact_form'>
+                    {% csrf_token %}
+                    <!-- Name Input -->
+                    <div class="form-group mb-4">
+                        <label for="name" class="form-label fw-semibold">Name</label>
+                        <input id="name" name="name" type="text" class="form-control form-control-lg rounded-pill" placeholder="Enter Your Name" maxlength="100" required>
+                        <div class="valid-feedback mt-1">Looks good!</div>
+                        <div class="invalid-feedback mt-1">Please enter your name.</div>
+                    </div>
+  
+                    <!-- Email Input -->
+                    <div class="form-group mb-4">
+                        <label for="email" class="form-label fw-semibold">Email</label>
+                        <input id="email" name="email" type="email" class="form-control form-control-lg rounded-pill" placeholder="Enter Your Email" required>
+                        <div class="valid-feedback mt-1">Valid email address!</div>
+                        <div class="invalid-feedback mt-1">Please enter a valid email address.</div>
+                    </div>
+  
+                    <!-- Mobile Input -->
+                    <div class="form-group mb-4">
+                        <label for="mobile" class="form-label fw-semibold">Mobile</label>
+                        <input id="mobile" name="mobile" type="tel" class="form-control form-control-lg rounded-pill" placeholder="Enter Your Mobile Number" pattern="[789][0-9]{9}" required>
+                        <div class="valid-feedback mt-1">Valid mobile number!</div>
+                        <div class="invalid-feedback mt-1">Please enter a valid 10 digit mobile number starting with 7, 8, or 9.</div>
+                    </div>
+  
+                    <!-- Message Input -->
+                    <div class="form-group mb-4">
+                        <label for="message" class="form-label fw-semibold">Message</label>
+                        <textarea id="message" name="message" class="form-control form-control-lg rounded-3" placeholder="Enter Your Message" maxlength="500" required></textarea>
+                        <div class="valid-feedback mt-1">Message looks good!</div>
+                        <div class="invalid-feedback mt-1">Please enter your message.</div>
+                    </div>
+  
+                    <!-- Recaptcha -->
+                    <div class="g-recaptcha mb-4" data-sitekey="6LfPeEgqAAAAAMkZQKg20vzSrrq_bheT0dbyAxKX"></div>
+  
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary w-100 rounded-pill btn-lg shadow-lg">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+<!-- Feature Section: How We Can Help -->
+<section id="features" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">How We Can Help You</h2>
+        <div class="row text-center">
+            <!-- Plumbing -->
+            <div class="col-md-4 mb-4">
+                <div class="feature-box feature-yellow shadow-sm p-4 rounded-4 h-100">
+                    <div class="icon mb-3">
+                        <i class="bi bi-tools" style="font-size: 2rem;"></i>
+                    </div>
+                    <h4>Expert Plumbing Services</h4>
+                    <p>Reliable plumbing professionals for your every need, from quick repairs to installations.</p>
+                </div>
+            </div>
+  
+            <!-- Teaching -->
+            <div class="col-md-4 mb-4">
+                <div class="feature-box feature-pink shadow-sm p-4 rounded-4 h-100">
+                    <div class="icon mb-3">
+                        <i class="bi bi-book" style="font-size: 2rem;"></i>
+                    </div>
+                    <h4>Qualified Tutors</h4>
+                    <p>Connect with experienced teachers to help you or your children excel academically.</p>
+                </div>
+            </div>
+  
+            <!-- Cleaning -->
+            <div class="col-md-4 mb-4">
+                <div class="feature-box feature-blue shadow-sm p-4 rounded-4 h-100">
+                    <div class="icon mb-3">
+                        <i class="bi bi-bucket" style="font-size: 2rem;"></i>
+                    </div>
+                    <h4>Professional Cleaning</h4>
+                    <p>Efficient and thorough cleaning services tailored to meet your residential or office needs.</p>
+                </div>
+            </div>
+  
+            <!-- Electrician -->
+            <div class="col-md-4 mb-4">
+                <div class="feature-box feature-purple shadow-sm p-4 rounded-4 h-100">
+                    <div class="icon mb-3">
+                        <i class="bi bi-lightning" style="font-size: 2rem;"></i>
+                    </div>
+                    <h4>Certified Electricians</h4>
+                    <p>Safe and professional electrical services for your home or business installations and repairs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+  
+  
+<!-- review section -->
+  <section class="reviews-section">
+    <h2>Trusted by people</h2>
+    <div class="reviews-container">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Within minutes the friendly sales assistant had secured me a spectacular room...</p>
+        <div class="author">- Stephen A.</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Super professional, organized and great to work with. These guys were invaluable...</p>
+        <div class="author">- Barry W.</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Sorted accommodation in Scotland for me and were very timely and professional...</p>
+        <div class="author">- Simon F.</div>
+      </div>
+      <!-- Add more review cards as needed -->
+    </div>
+  </section>
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+  <script>
+      AOS.init({
+          duration: 800,
+          easing: 'ease-in-out',
+          once: true,
+      });
+  </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+<script>
+    // JavaScript to cycle through images
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.slider-img');
+    const totalImages = images.length;
+
+    // Function to show the current image and hide the others
+    function showImage(index) {
+        images.forEach((img, i) => {
+            img.style.display = (i === index) ? 'block' : 'none';
+        });
+    }
+
+    // Initial call to show the first image
+    showImage(currentIndex);
+
+    // Function to update the image index every 3 seconds
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % totalImages;
+        showImage(currentIndex);
+    }, 3000);  // Change image every 3 seconds
+</script>
+
+<script>
+    const designFields = [
+    "Fast ",
+    "Reliable ",
+    "Trustworthy ",
+    "Rapid ",
+    "Efficient ",
+    "Guaranteed "
+  ];
+
+  const options = {
+    strings: designFields,
+    typeSpeed: 50,
+    backSpeed: 50,
+    loop: true,
+    loopCount: Infinity,
+    showCursor: false
+  };
+
+  const typed = new Typed('.typed-element', options);
+</script>
+
+   <!--recaptcha-->
+   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+      
+    (() => {
+       'use strict';
+       window.addEventListener('load', function () {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          const forms = document.querySelectorAll('.needs-validation');
+          var validation = Array.prototype.filter.call(forms, function (form) {
+             form.addEventListener('submit', event => {
+                if (form.checkValidity() === false) {
+                   event.preventDefault();
+                   event.stopPropagation();
+                }
+                else{
+                    event.preventDefault();
+                    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+                    var captchaResponse = grecaptcha.getResponse();
+                     
+                     if (captchaResponse.length === 0) {
+                           toastr.warning('Please complete the CAPTCHA.');
+                           return;  // Stop form submission if CAPTCHA is not completed
+                        }
+
+                    $.ajax({
+                        type: 'POST',
+                        url: form.action,
+                        data : {
+                            name: $("#name").val(),
+                            mobile: $('#mobile').val(),
+                            email : $('#email').val(),
+                            message: $('#message').val(),
+                            csrfmiddlewaretoken: csrftoken,
+                            'g-recaptcha-response': captchaResponse,  //pass the captchaResponse
+                        },
+                        success: function(response){
+                            toastr.success('Message sent successfully!');
+                            // reset
+                            form.reset();
+                            form.classList.remove('was-validated');
+                            grecaptcha.reset();  
+                        },
+                        error: function (xhr,response){
+                            if (xhr.status === 429) {
+                                // Handle rate limit exceeded 
+                                toastr.warning(xhr.responseJSON.message);
+                                //$(".rate_limit").text(xhr.responseJSON.message); 
+                             }
+                             else {
+                                toastr.error('An error occurred. Please try again.');
+                             }
+                        },
+                    })
+                }
+                form.classList.add('was-validated');
+             }, false);
+          });
+       }, false);
+    })();
+</script>
+
+<!-- toastr CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<!-- jQuery (toastr depends on jQuery) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- toastr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+ <script>
+    toastr.options = {
+       "closeButton": true,
+       "progressBar": true,
+       "positionClass": "toast-top-right",
+       "showDuration": "300",
+       "hideDuration": "1000",
+       "timeOut": "5000",
+       "extendedTimeOut": "1000",
+       "showEasing": "swing",
+       "hideEasing": "linear",
+       "showMethod": "fadeIn",
+       "hideMethod": "fadeOut"
+   };
+ </script>
+
+{% endblock%}

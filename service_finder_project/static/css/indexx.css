@@ -1,0 +1,319 @@
+/* General styling */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.hero-text {
+  max-width: 40%;
+}
+
+.hero-text h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.hero .type{
+  color:#6c63ff;
+}
+
+.hero-text form {
+  margin-top: 20px;
+}
+
+.hero-text input[type="email"] {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.hero-text button {
+  padding: 10px 20px;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Overall Hero Section Styling */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  background-color: #f9f9f9;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero-animation {
+  position: relative;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Circular Image */
+.image-circle {
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.image-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Floating Shapes */
+.floating-shape {
+  position: absolute;
+  background-color: #f3bca1;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: float 10s infinite ease-in-out;
+}
+
+.shape1 {
+  width: 100px;
+  height: 100px;
+  top: -30px;
+  left: -50px;
+  background-color: #f3bca1;
+  animation-delay: 0s;
+}
+
+.shape2 {
+  width: 150px;
+  height: 150px;
+  bottom: -50px;
+  right: -30px;
+  background-color: #ffd6a5;
+  animation-delay: 2s;
+}
+
+.shape3 {
+  width: 80px;
+  height: 80px;
+  top: 100px;
+  right: 150px;
+  background-color: #cce2cb;
+  animation-delay: 4s;
+}
+
+/* Animation Keyframes for Floating Effect */
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+  }
+}
+
+
+
+
+
+
+.services-section{
+  background-color: white;
+}
+
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card img {
+  object-fit: cover;
+}
+
+/* Hover Animation */
+.service-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Section Styling */
+.contact-section {
+  background-color: #f9f9f9;
+  padding: 3rem 0;
+}
+.contact-section h2, .contact-section p {
+  color: #333;
+}
+
+
+
+/* Form Styling */
+.form-control, .btn {
+  transition: all 0.3s ease-in-out;
+}
+.form-control-lg {
+  padding: 1rem;
+}
+.form-control:focus {
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+}
+.btn-primary {
+  background-color: #6c63ff;
+  border-color: #6c63ff;
+}
+.btn-primary:hover {
+  background-color: #6c63ff;
+  border-color: #6c63ff;
+}
+.btn-outline-primary:hover {
+  color: white;
+  background-color: #6c63ff;
+  border-color: #6c63ff;
+}
+
+
+
+
+
+#features {
+  background-color: #fff;
+}
+
+#features h2 {
+  font-size: 2rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.feature-box {
+  padding: 2rem;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-radius: 1.25rem;
+}
+
+.feature-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+}
+
+.feature-yellow {
+  background-color: #FFECB3;
+}
+
+.feature-pink {
+  background-color: #F8BBD0;
+}
+
+.feature-blue {
+  background-color: #BBDEFB;
+}
+
+.feature-purple {
+  background-color: #D1C4E9;
+}
+
+.feature-box .icon img {
+  width: 50px;
+}
+
+.feature-box h4 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.feature-box p {
+  font-size: 1rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .feature-box {
+      margin-bottom: 2rem;
+  }
+}
+
+
+
+/* Styling for the entire reviews section */
+.reviews-section {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+.reviews-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+/* Reviews container - Flexbox for alignment */
+.reviews-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Individual review card styling */
+.review-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 250px;
+  transform: rotate(-2deg);  /* Slight tilt for aesthetic */
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+/* On hover, slightly enlarge the card */
+.review-card:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.review-card .stars {
+  color: #f5a623; /* Star color */
+  font-size: 1rem;
+}
+
+.review-card p {
+  font-size: 1rem;
+  color: #333;
+  margin: 15px 0;
+}
+
+.review-card .author {
+  font-weight: bold;
+  font-size: 0.6rem;
+  color: #555;
+}
+
+/* Custom background colors for some review cards */
+.review-card:nth-child(2) {
+  background-color: #d1c4e9;
+}
+
+.review-card:nth-child(3) {
+  background-color: #c5e1a5;
+}

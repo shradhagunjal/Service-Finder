@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Service Finder</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+	* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: white;
+}
+
+nav .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.actions a {
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.login-btn {
+  background-color: transparent;
+  color: #333;
+}
+
+.demo-btn {
+  background-color: #d7c7ff;
+  color: white;
+}
+
+/* General styling */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.hero-text {
+  max-width: 40%;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.hero-text form {
+  margin-top: 20px;
+}
+
+.hero-text input[type="email"] {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.hero-text button {
+  padding: 10px 20px;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Overall Hero Section Styling */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  background-color: #f9f9f9;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero-animation {
+  position: relative;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Circular Image */
+.image-circle {
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.image-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Floating Shapes */
+.floating-shape {
+  position: absolute;
+  background-color: #f3bca1;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: float 10s infinite ease-in-out;
+}
+
+.shape1 {
+  width: 100px;
+  height: 100px;
+  top: -30px;
+  left: -50px;
+  background-color: #f3bca1;
+  animation-delay: 0s;
+}
+
+.shape2 {
+  width: 150px;
+  height: 150px;
+  bottom: -50px;
+  right: -30px;
+  background-color: #ffd6a5;
+  animation-delay: 2s;
+}
+
+.shape3 {
+  width: 80px;
+  height: 80px;
+  top: 100px;
+  right: 150px;
+  background-color: #cce2cb;
+  animation-delay: 4s;
+}
+
+/* Animation Keyframes for Floating Effect */
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+  }
+}
+
+
+
+/* Styling for the entire reviews section */
+.reviews-section {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+.reviews-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+/* Reviews container - Flexbox for alignment */
+.reviews-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Individual review card styling */
+.review-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 250px;
+  transform: rotate(-2deg);  /* Slight tilt for aesthetic */
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+/* On hover, slightly enlarge the card */
+.review-card:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.review-card .stars {
+  color: #f5a623; /* Star color */
+  font-size: 1.2rem;
+}
+
+.review-card p {
+  font-size: 0.9rem;
+  color: #333;
+  margin: 15px 0;
+}
+
+.review-card .author {
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* Custom background colors for some review cards */
+.review-card:nth-child(2) {
+  background-color: #d1c4e9;
+}
+
+.review-card:nth-child(3) {
+  background-color: #c5e1a5;
+}
+
+/* Add other specific background colors as desired */
+
+
+.services-section{
+  background-color: white;
+}
+
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card img {
+  object-fit: cover;
+}
+
+/* Hover Animation */
+.service-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.back_to_top a{
+  background-color:#6c63ff;
+  color: white
+}
+
+
+
+/* Section Styling */
+.contact-section {
+  background-color: #f9f9f9;
+  padding: 3rem 0;
+}
+.contact-section h2, .contact-section p {
+  color: #333;
+}
+
+/* Modal Styling */
+.modal-content {
+  border-radius: 1.25rem;
+  padding: 2rem;
+}
+.modal-header {
+  border-bottom: none;
+}
+.modal-title {
+  font-weight: bold;
+  color: #6c63ff;
+}
+
+/* Form Styling */
+.form-control, .btn {
+  transition: all 0.3s ease-in-out;
+}
+.form-control-lg {
+  padding: 1rem;
+}
+.form-control:focus {
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+}
+.btn-primary {
+  background-color: #6c63ff;
+  border-color: #6c63ff;
+}
+.btn-primary:hover {
+  background-color: #6c63ff;
+  border-color: #6c63ff;
+}
+.btn-outline-primary:hover {
+  color: white;
+  background-color: #6c63ff;
+  border-color: #6c63ff;
+}
+
+
+
+
+
+
+#features {
+  background-color: #fff;
+}
+
+#features h2 {
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.feature-box {
+  padding: 2rem;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-radius: 1.25rem;
+}
+
+.feature-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+}
+
+.feature-yellow {
+  background-color: #FFECB3;
+}
+
+.feature-pink {
+  background-color: #F8BBD0;
+}
+
+.feature-blue {
+  background-color: #BBDEFB;
+}
+
+.feature-purple {
+  background-color: #D1C4E9;
+}
+
+.feature-box .icon img {
+  width: 50px;
+}
+
+.feature-box h4 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.feature-box p {
+  font-size: 1rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .feature-box {
+      margin-bottom: 2rem;
+  }
+}
+
+
+
+
+footer h5 {
+  font-weight: bold;
+  color: #fff;
+}
+
+footer p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+footer ul li {
+  margin-bottom: 0.75rem;
+}
+
+
+.footer-section {
+  background-color: #212529;
+}
+
+</style>
+
+</head>
+<body>
+  <nav class="sticky-top">
+    <div class="logo">Your Logo</div>
+    <ul>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">Customers</a></li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Resources</a></li>
+    </ul>
+    <div class="actions">
+      <a href="#" class="login-btn">Login</a>
+      <a href="#" class="demo-btn">See a Demo</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Benefits for Your Team in [Location]</h1>
+      <p>Make service finding easy and efficient in your local area.</p>
+      <form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Get Started</button>
+      </form>
+    </div>
+    <div class="hero-animation">
+      <div class="image-circle">
+        <img src="help.jpg" alt="Team Benefits Image">
+      </div>
+      <div class="floating-shape shape1"></div>
+      <div class="floating-shape shape2"></div>
+      <div class="floating-shape shape3"></div>
+    </div>
+  </section>
+
+ <!-- Services Section -->
+<section id="services" class="services-section py-5">
+  <div class="container">
+      <h2 class="text-center mb-4">Our Services</h2>
+      <p class="text-center mb-5">Browse and book trusted local professionals for all your needs.</p>
+      <div class="row text-center">
+          <div class="col-md-3 mb-4">
+              <div class="service-card p-4 shadow-sm">
+                  <img src="cleaning.jpeg" class="img-fluid mb-3">
+                  <h5>Plumbing</h5>
+                  <p>Fix leaks, install fixtures, and more with trusted local plumbers.</p>
+                  <a href="#" class="btn btn-outline-primary">Book Now</a>
+              </div>
+          </div>
+          <div class="col-md-3 mb-4">
+              <div class="service-card p-4 shadow-sm">
+                  <img src="cleaning.jpeg" class="img-fluid mb-3">
+                  <h5>Electrical</h5>
+                  <p>Expert electricians for all your wiring and repair needs.</p>
+                  <a href="#" class="btn btn-outline-primary">Book Now</a>
+              </div>
+          </div>
+          <div class="col-md-3 mb-4">
+              <div class="service-card p-4 shadow-sm">
+                  <img src="cleaning.jpeg" class="img-fluid mb-3">
+                  <h5>Cleaning</h5>
+                  <p>Professional cleaning services to keep your home spotless.</p>
+                  <a href="#" class="btn btn-outline-primary">Book Now</a>
+              </div>
+          </div>
+          <div class="col-md-3 mb-4">
+              <div class="service-card p-4 shadow-sm">
+                  <img src="cleaning.jpeg" class="img-fluid mb-3">
+                  <h5>Tutoring</h5>
+                  <p>Find top tutors to help you master any subject and get support.</p>
+                  <a href="#" class="btn btn-outline-primary">Book Now</a>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+</section>
+
+
+<!-- Request a Callback Section -->
+<section id="get-in-touch" class="contact-section bg-light py-5">
+  <div class="container">
+      <h2 class="text-center mb-4">Need Help? Request a Callback!</h2>
+      <p class="text-center mb-5">Our tech heroes are just a call away. Get in touch and let us help you find the right solution!</p>
+      <div class="text-center">
+          <a href="#" class="btn btn-primary btn-lg shadow-lg rounded-pill px-5" data-bs-toggle="modal" data-bs-target="#callbackModal">Request a Callback</a>
+      </div>
+  </div>
+</section>
+
+<!-- Modal for Callback Request -->
+<div class="modal fade" id="callbackModal" tabindex="-1" aria-labelledby="callbackModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content rounded-4 shadow-lg">
+          <div class="modal-header border-0">
+              <h5 class="modal-title" id="callbackModalLabel">Request a Callback</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body px-4">
+            
+                  <!-- Name Input -->
+                  <div class="form-group mb-4">
+                      <label for="name" class="form-label fw-semibold">Name</label>
+                      <input id="name" name="name" type="text" class="form-control form-control-lg rounded-pill" placeholder="Enter Your Name" maxlength="100" required>
+                      <div class="valid-feedback mt-1">Looks good!</div>
+                      <div class="invalid-feedback mt-1">Please enter your name.</div>
+                  </div>
+
+                  <!-- Email Input -->
+                  <div class="form-group mb-4">
+                      <label for="email" class="form-label fw-semibold">Email</label>
+                      <input id="email" name="email" type="email" class="form-control form-control-lg rounded-pill" placeholder="Enter Your Email" required>
+                      <div class="valid-feedback mt-1">Valid email address!</div>
+                      <div class="invalid-feedback mt-1">Please enter a valid email address.</div>
+                  </div>
+
+                  <!-- Mobile Input -->
+                  <div class="form-group mb-4">
+                      <label for="mobile" class="form-label fw-semibold">Mobile</label>
+                      <input id="mobile" name="mobile" type="tel" class="form-control form-control-lg rounded-pill" placeholder="Enter Your Mobile Number" pattern="[789][0-9]{9}" required>
+                      <div class="valid-feedback mt-1">Valid mobile number!</div>
+                      <div class="invalid-feedback mt-1">Please enter a valid 10 digit mobile number starting with 7, 8, or 9.</div>
+                  </div>
+
+                  <!-- Message Input -->
+                  <div class="form-group mb-4">
+                      <label for="message" class="form-label fw-semibold">Message</label>
+                      <textarea id="message" name="message" class="form-control form-control-lg rounded-3" placeholder="Enter Your Message" maxlength="500" required></textarea>
+                      <div class="valid-feedback mt-1">Message looks good!</div>
+                      <div class="invalid-feedback mt-1">Please enter your message.</div>
+                  </div>
+
+                  <!-- Recaptcha -->
+                  <div class="g-recaptcha mb-4" data-sitekey="6LfPeEgqAAAAAMkZQKg20vzSrrq_bheT0dbyAxKX"></div>
+
+                  <!-- Submit Button -->
+                  <button type="submit" class="btn btn-primary w-100 rounded-pill btn-lg shadow-lg">Submit</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Feature Section: How We Can Help -->
+<section id="features" class="py-5">
+  <div class="container">
+      <h2 class="text-center mb-5">How We Can Help You</h2>
+      <div class="row text-center">
+          <!-- Plumbing -->
+          <div class="col-md-4 mb-4">
+              <div class="feature-box feature-yellow shadow-sm p-4 rounded-4 h-100">
+                  <div class="icon mb-3">
+                      <i class="bi bi-tools" style="font-size: 2rem;"></i>
+                  </div>
+                  <h4>Expert Plumbing Services</h4>
+                  <p>Reliable plumbing professionals for your every need, from quick repairs to installations.</p>
+              </div>
+          </div>
+
+          <!-- Teaching -->
+          <div class="col-md-4 mb-4">
+              <div class="feature-box feature-pink shadow-sm p-4 rounded-4 h-100">
+                  <div class="icon mb-3">
+                      <i class="bi bi-book" style="font-size: 2rem;"></i>
+                  </div>
+                  <h4>Qualified Tutors</h4>
+                  <p>Connect with experienced teachers to help you or your children excel academically.</p>
+              </div>
+          </div>
+
+          <!-- Cleaning -->
+          <div class="col-md-4 mb-4">
+              <div class="feature-box feature-blue shadow-sm p-4 rounded-4 h-100">
+                  <div class="icon mb-3">
+                      <i class="bi bi-bucket" style="font-size: 2rem;"></i>
+                  </div>
+                  <h4>Professional Cleaning</h4>
+                  <p>Efficient and thorough cleaning services tailored to meet your residential or office needs.</p>
+              </div>
+          </div>
+
+          <!-- Electrician -->
+          <div class="col-md-4 mb-4">
+              <div class="feature-box feature-purple shadow-sm p-4 rounded-4 h-100">
+                  <div class="icon mb-3">
+                      <i class="bi bi-lightning" style="font-size: 2rem;"></i>
+                  </div>
+                  <h4>Certified Electricians</h4>
+                  <p>Safe and professional electrical services for your home or business installations and repairs.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+  
+<section class="reviews-section">
+  <h2>Trusted by people</h2>
+  <div class="reviews-container">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>Within minutes the friendly sales assistant had secured me a spectacular room...</p>
+      <div class="author">- Stephen A.</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>Super professional, organized and great to work with. These guys were invaluable...</p>
+      <div class="author">- Barry W.</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>Sorted accommodation in Scotland for me and were very timely and professional...</p>
+      <div class="author">- Simon F.</div>
+    </div>
+    <!-- Add more review cards as needed -->
+  </div>
+</section>
+
+
+<!-- Footer Section -->
+<footer class="footer-section bg-dark text-white py-5">
+  <div class="container">
+      <div class="row">
+          <!-- About Section -->
+          <div class="col-md-4 mb-4">
+              <h5 class="text-uppercase">About Us</h5>
+              <p class="text-muted">ServiceFinder helps you find trusted local professionals for all your home and business needs. Whether you're looking for plumbers, electricians, cleaners, or tutors, we've got you covered with easy booking and trusted reviews.</p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-md-2 mb-4">
+              <h5 class="text-uppercase">Quick Links</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Home</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Services</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">About Us</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">Contact</a></li>
+                  <li><a href="#" class="text-white text-decoration-none">FAQ</a></li>
+              </ul>
+          </div>
+
+          <!-- Support & Contact -->
+          <div class="col-md-3 mb-4">
+              <h5 class="text-uppercase">Support & Contact</h5>
+              <p><i class="bi bi-envelope me-2"></i><a href="mailto:support@servicefinder.com" class="text-white text-decoration-none">support@servicefinder.com</a></p>
+              <p><i class="bi bi-telephone me-2"></i><a href="tel:+1234567890" class="text-white text-decoration-none">+1 234 567 890</a></p>
+              <p><i class="bi bi-geo-alt me-2"></i>123 Tech Street, City, Country</p>
+          </div>
+
+          <!-- Newsletter Signup -->
+          <div class="col-md-3 mb-4">
+              <h5 class="text-uppercase">Subscribe to Our Newsletter</h5>
+              <form action="#" method="post">
+                  <div class="input-group">
+                      <input type="email" class="form-control border-0 rounded-3" placeholder="Your email" aria-label="Your email" required>
+                      <button class="btn btn-primary rounded-3 ms-2" type="submit">Subscribe</button>
+                  </div>
+                  <small class="text-muted mt-2 d-block">Stay updated with our latest services and offers.</small>
+              </form>
+          </div>
+      </div>
+
+      <!-- Social Media Links -->
+      <div class="row mt-4">
+          <div class="col text-center">
+              <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
+          </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="row mt-4">
+          <div class="col text-center">
+              <p class="mb-0">&copy; 2024 ServiceFinder. All rights reserved. | <a href="#" class="text-white text-decoration-none">Privacy Policy</a> | <a href="#" class="text-white text-decoration-none">Terms of Service</a></p>
+          </div>
+      </div>
+    </div>
+</footer>
+
+
+<section class="back_to_top">
+ <!-- Back to Top Button -->
+ <a href="#" class="back-to-top btn " style="position: fixed; bottom: 30px; right: 30px; display: none;">
+  <span style="font-size: 25px;">^</span>
+</a>
+</section>
+<!--js Script-->
+<script>
+  window.onscroll = function() {
+    var button = document.querySelector('.back-to-top');
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      button.style.display = "block";
+    } else {
+      button.style.display = "none";
+    }
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+    });
+</script>
+
+</body>
+</html>

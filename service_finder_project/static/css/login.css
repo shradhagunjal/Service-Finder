@@ -1,0 +1,46 @@
+.section_log_reg{
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: auto;
+    padding: 20px;
+    width: 50%;
+}
+h2 {
+    color: #333;
+}
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #4cae4c;
+}
+#provider_details {
+    display: none;
+}
+#map {
+    height: 300px; /* Set the height of the map */
+    width: 100%; /* Set the width of the map */
+    margin-bottom: 10px;
+}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section class="service-providers container mt-5">
+    <h2 class="text-center mb-4">Available Service Providers</h2>
+
+    <!-- Search form -->
+    <form method="GET" action="{% url 'service_providers' %}" class="mb-4">
+        <label for="service-type">Select Service Type:</label>
+        <select id="service-type" name="q" class="form-select">
+            <option value="">All Services</option>
+            <option value="Plumbing">Plumber</option>
+            <option value="Teaching">Teacher</option>
+            <option value="Cleaning">Cleaning</option>
+            <option value="Electrician">Electrician</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <!-- Bootstrap grid layout -->
+    <div class="row">
+        <!-- Loop through each service provider -->
+        {% for provider in service_providers %}
+            <div class="col-md-4 mb-4">
+                <!-- Bootstrap card -->
+                <div class="card h-100">
+                    <!-- Display shop image if available -->
+                    {% if provider.shop_image %}
+                        <img src="{{ provider.shop_image.url }}" class="card-img-top" alt="Shop Image" style="max-height: 200px; object-fit: cover;">
+                    {% else %}
+                        <img src="{% static 'css/blank.jpg' %}" class="card-img-top" alt="Default Image" style="max-height: 200px; object-fit: cover;">
+                    {% endif %}
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ provider.name }}</h5>
+                        <p class="card-text"><strong>Business Name:</strong> {{ provider.business_name }}</p>
+                        <p class="card-text"><strong>Email:</strong> {{ provider.email }}</p>
+                        <p class="card-text"><strong>Service Type:</strong> {{ provider.service_type }}</p>
+                        <p class="card-text"><strong>Location:</strong> {{ provider.location }}</p>
+                        <p class="card-text"><strong>Contact Number:</strong> {{ provider.contact_number }}</p>
+                        <p class="card-text"><strong>Working Hours:</strong> {{ provider.working_hours }}</p>
+                        <p class="card-text"><strong>Website:</strong> <a href="{{ provider.website }}" target="_blank">{{ provider.website }}</a></p>
+                    </div>
+
+                    <!-- Optional: Add a card footer if needed -->
+                    <div class="card-footer text-muted">
+                        Provider since {{ provider.created_at|date:"F d, Y" }}  <!-- Assuming you have a created_at field -->
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="col-12 text-center">No service providers found matching your search.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

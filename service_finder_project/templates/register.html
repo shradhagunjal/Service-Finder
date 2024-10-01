@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <section class = "section_log_reg">
+        <h2>Register</h2>
+        <form class="needs-validation"  method="POST" action = '/register_form' id="register" novalidate>
+            {% csrf_token %}
+            <div class="form-group mb-4">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Enter Your Name" maxlength="100" required>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Enter Your Email" required>
+                <div class="valid-feedback">Valid email!</div>
+                <div class="invalid-feedback">Please enter a valid email.</div>
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" required>
+                <div class="valid-feedback">Password looks good!</div>
+                <div class="invalid-feedback">Please enter a password.</div>
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="user_type">Register As:</label>
+                <select id="user_type" name="user_type" class="form-control" required>
+                    <option value="seeker">Service Seeker</option>
+                    <option value="provider">Service Provider</option>
+                </select>
+                <div class="valid-feedback">Good choice!</div>
+                <div class="invalid-feedback">Please select a user type.</div>
+            </div>
+
+            <div id="provider_details" style="display:none;">
+                <div class="form-group mb-4">
+                    <label for="service_type">Service Type:</label>
+                    <select id="service_type" name="service_type" class="form-control" required>
+                        <option value="plumbing">Plumbing</option>
+                        <option value="teaching">Teaching</option>
+                        <option value="cleaning">Cleaning</option>
+                        <option value="electrician">Electrician</option>
+                    </select>
+                    <div class="valid-feedback">Service type selected!</div>
+                    <div class="invalid-feedback">Please select a service type.</div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="business_name">Business Name:</label>
+                    <input type="text" id="business_name" name="business_name" class="form-control" placeholder="Enter Business Name" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please enter your business name.</div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="service_description">Service Description:</label>
+                    <textarea id="service_description" name="service_description" class="form-control" rows="4" required></textarea>
+                    <div class="valid-feedback">Description looks good!</div>
+                    <div class="invalid-feedback">Please provide a service description.</div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="location">Select Location:</label>
+                    <select id="location" name="location" class="form-control" required>
+                        <option value="" disabled selected>Select your location</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bangalore">Bangalore</option>
+                        <option value="Chennai">Chennai</option>
+                        <option value="Kolkata">Kolkata</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Ahmedabad">Ahmedabad</option>
+                        <option value="Pune">Pune</option>
+                        <option value="Jaipur">Jaipur</option>
+                        <option value="Lucknow">Lucknow</option>
+                    </select>
+                    <div class="valid-feedback">Location selected!</div>
+                    <div class="invalid-feedback">Please select a location.</div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="home_address">Address</label>
+                    <input type="text" id="home_address" name="home_address" class="form-control" placeholder="Enter your home/shop address" required>
+                    <div class="valid-feedback">Address looks good!</div>
+                    <div class="invalid-feedback">Please enter your home/shop address.</div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="contact_number">Contact Number:</label>
+                    <input type="tel" id="contact_number" name="contact_number" class="form-control" placeholder="Enter Contact Number" required>
+                    <div class="valid-feedback">Valid contact number!</div>
+                    <div class="invalid-feedback">Please enter a valid contact number.</div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="working_hours">Working Hours:</label>
+                    <input type="text" id="working_hours" name="working_hours" class="form-control" placeholder="e.g., 9 AM - 5 PM"required >
+                    <div class="valid-feedback">Working hours noted!</div>
+                    <div class="invalid-feedback">Please provide working hours.</div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="shop_image">Upload Shop/logo/your_work Image:</label>
+                    <input type="file" id="shop_image" name="shop_image" class="form-control-file" accept="image/*" >
+                    <div class="valid-feedback">Image uploaded!</div>
+                    <div class="invalid-feedback">Please upload an image.</div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="website">Website/Social Media Links:</label>
+                    <input type="url" id="website" name="website" class="form-control" placeholder="e.g., https://yourwebsite.com" >
+                </div>
+            </div> 
+
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </section>
+    <script>
+        // Function to toggle validation for provider-specific fields
+        function toggleProviderDetails() {
+            const userTypeField = document.getElementById("user_type");
+            const providerDetails = document.getElementById("provider_details");
+            const providerInputs = providerDetails.querySelectorAll('input, select, textarea');
+    
+            // If "Service Provider" is selected, show fields and add "required"
+            if (userTypeField.value === "provider") {
+                providerDetails.style.display = "block";
+                providerInputs.forEach(input => {
+                    input.setAttribute('required', 'required');
+                });
+            } else {
+                // If "Service Seeker" is selected, hide fields and remove "required"
+                providerDetails.style.display = "none";
+                providerInputs.forEach(input => {
+                    input.removeAttribute('required');
+                });
+            }
+        }
+    
+        // Add event listener to handle the user type selection
+        document.getElementById("user_type").addEventListener("change", toggleProviderDetails);
+    
+        (() => {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                const forms = document.querySelectorAll('.needs-validation');
+                
+                // Apply validation and submission logic to each form
+                Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        // Re-run validation on hidden fields based on user selection
+                        toggleProviderDetails();
+    
+                        // Check if form is valid according to Bootstrap validation
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        } else {
+                            event.preventDefault();
+                            const formData = new FormData(form);
+                            const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                            formData.append('csrfmiddlewaretoken', csrftoken);
+
+                            $.ajax({
+                                type: 'POST',
+                                url: form.action,
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                success: function(response) {
+                                    toastr.success('Message sent successfully!');
+                                    form.reset();
+                                    form.classList.remove('was-validated');
+                                },
+                                error: function(xhr, response) {
+                                    if (xhr.status === 409) {
+                                        toastr.warning(xhr.responseJSON.email[0]);
+                                        form.reset();
+                                        form.classList.remove('was-validated');
+                                    } else {
+                                        toastr.error('An error occurred. Please try again.');
+                                    }
+                                }
+                            });
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+
+
+<!-- toastr CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<!-- jQuery (toastr depends on jQuery) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- toastr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+ <script>
+    toastr.options = {
+       "closeButton": true,
+       "progressBar": true,
+       "positionClass": "toast-top-right",
+       "showDuration": "300",
+       "hideDuration": "1000",
+       "timeOut": "5000",
+       "extendedTimeOut": "1000",
+       "showEasing": "swing",
+       "hideEasing": "linear",
+       "showMethod": "fadeIn",
+       "hideMethod": "fadeOut"
+   };
+ </script>
+    
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <section class = "section_log_reg">
+        <h2>Login</h2>
+        <form class="needs-validation" novalidate>
+            <div class="form-group mb-4">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Enter Your Email" required>
+                <div class="valid-feedback">Valid email!</div>
+                <div class="invalid-feedback">Please enter a valid email.</div>
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" required>
+                <div class="valid-feedback">Password looks good!</div>
+                <div class="invalid-feedback">Please enter a password.</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </section>
+
+
+    
+<script>     
+    (() => {
+       'use strict';
+       window.addEventListener('load', function () {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          const forms = document.querySelectorAll('.needs-validation');
+          var validation = Array.prototype.filter.call(forms, function (form) {
+             form.addEventListener('submit', event => {
+                if (form.checkValidity() === false) {
+                   event.preventDefault();
+                   event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+             }, false);
+          });
+       }, false);
+    })();
+</script>
+
+{% endblock %}
